@@ -17,4 +17,6 @@ networks:
     verify: True
   ganache: 
     verify: False
-
+dotenv: .env
+wallets:
+  from_key: ${PRIVATE_KEY}
