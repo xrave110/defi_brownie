@@ -1,5 +1,5 @@
 import React from 'react';
-import { DAppProvider, ChainId } from "@usedapp/core"
+import { DAppProvider, Kovan } from "@usedapp/core"
 import { Header } from "./components/Header"
 import { Container } from "@material-ui/core"
 import { Main } from "./components/Main"
@@ -8,7 +8,11 @@ import { Main } from "./components/Main"
 function App() {
   return (
     <DAppProvider config={{
-      supportedChains: [ChainId.Kovan, ChainId.Rinkeby], //1337 for ganache
+      networks: [Kovan],
+      notifications: {
+        expirationPeriod: 1000,
+        checkInterval: 100,
+      },
     }}>
       <Header />
       <Container maxWidth="sm">

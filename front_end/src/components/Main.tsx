@@ -1,5 +1,5 @@
 /* eslint-disable spaced-comment */
-/// <reference types="react-scripts"/>
+/// <reference types="react-scripts"/> // for importing pngs
 
 import { useEthers } from "@usedapp/core"
 import helperConfig from "../helper-config.json"
@@ -9,7 +9,7 @@ import brownieConfig from "../brownie-config.json"
 import dapp from "../dapp.png"
 import eth from "../eth.png"
 import dai from "../dai.png"
-import { YourWallet } from "./yourWallet/YourWallet"
+import { YourWallet } from "./yourWallet"
 
 export type Token = {
     image: string
