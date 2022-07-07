@@ -3,6 +3,7 @@ import { DAppProvider, Kovan } from "@usedapp/core"
 import { Header } from "./components/Header"
 import { Container } from "@material-ui/core"
 import { Main } from "./components/Main"
+import { getDefaultProvider } from 'ethers'
 
 
 function App() {
@@ -12,6 +13,10 @@ function App() {
       notifications: {
         expirationPeriod: 1000,
         checkInterval: 100,
+      },
+      readOnlyChainId: Kovan.chainId,
+      readOnlyUrls: {
+        [Kovan.chainId]: getDefaultProvider('kovan')
       },
     }}>
       <Header />

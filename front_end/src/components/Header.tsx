@@ -21,7 +21,7 @@ export const Header = () => {
                 {
                     isConnected ?
                         (<Button color="primary" variant="contained" onClick={deactivate}>
-                            Dicsonnect
+                            Disconnect
                         </Button>) :
                         (<Button color="primary" variant="contained" onClick={() => activateBrowserWallet()}>
                             Connect
