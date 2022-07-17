@@ -21,13 +21,13 @@ export const StakeForm = ({ token }: StakeFormProps) => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newAmount = event.target.value === "" ? "" : Number(event.target.value)
         setAmount(newAmount)
-        console.log(amount)
+        console.log(newAmount)
     }
 
-    const { approve, approveErc20State } = useStakeToken(tokenAddress)
+    const { approveAndStake, approveErc20State } = useStakeToken(tokenAddress)
     const handleStakeSubmit = () => {
         const amountAsWei = utils.parseEther(amount.toString())
-        return approve(amountAsWei.toString())
+        return approveAndStake(amountAsWei.toString())
     }
 
     return (
