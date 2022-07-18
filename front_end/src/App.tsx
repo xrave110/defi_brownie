@@ -11,8 +11,8 @@ function App() {
     <DAppProvider config={{
       networks: [Kovan],
       notifications: {
-        expirationPeriod: 1000,
-        checkInterval: 100,
+        expirationPeriod: 1000, //
+        checkInterval: 100, // check the blockchain every 0.1 second
       },
       readOnlyChainId: Kovan.chainId,
       readOnlyUrls: {

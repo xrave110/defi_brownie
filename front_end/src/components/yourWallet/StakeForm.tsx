@@ -1,8 +1,8 @@
 import { Token } from "../Main"
-import { useEthers, useTokenBalance } from "@usedapp/core"
+import { useEthers, useTokenBalance, useNotifications } from "@usedapp/core"
 import { formatUnits } from "@ethersproject/units"
 import { Button, Input } from "@material-ui/core"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStakeToken } from "../../hooks/useStakeToken"
 import { utils } from 'ethers'
 
@@ -16,6 +16,7 @@ export const StakeForm = ({ token }: StakeFormProps) => {
     const { account } = useEthers()
     const tokenBalance = useTokenBalance(tokenAddress, account)
     const formattedTokenBalance: number = tokenBalance ? parseFloat(formatUnits(tokenBalance, 18)) : 0;
+    const { notifications } = useNotifications()
 
     const [amount, setAmount] = useState<number | string | Array<number | string>>(0)
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +30,21 @@ export const StakeForm = ({ token }: StakeFormProps) => {
         const amountAsWei = utils.parseEther(amount.toString())
         return approveAndStake(amountAsWei.toString())
     }
+
+    useEffect(() => {
+        if (notifications.filter(
+            (notification) =>
+                notification.type === 'transactionSucceed' &&
+                notification.transactionName === "Approve ERC20 transfer").length > 0) {
+            console.log("Approved")
+        }
+        if (notifications.filter(
+            (notification) =>
+                notification.type === 'transactionSucceed' &&
+                notification.transactionName === "Stake Tokens").length > 0) {
+            console.log("Staked!")
+        }
+    }, [notifications])
 
     return (
         <>
