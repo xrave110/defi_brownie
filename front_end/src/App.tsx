@@ -21,7 +21,6 @@ function App() {
     }}>
       <Header />
       <Container maxWidth="sm">
-        <div>Hi!</div>
         <Main />
       </Container>
     </DAppProvider>

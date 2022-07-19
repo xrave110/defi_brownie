@@ -10,12 +10,21 @@ import dapp from "../dapp.png"
 import eth from "../eth.png"
 import dai from "../dai.png"
 import { YourWallet } from "./yourWallet"
+import { makeStyles } from "@material-ui/core"
 
 export type Token = {
     image: string
     address: string
     name: string
 }
+
+const useStyles = makeStyles((theme) => ({
+    title: {
+        color: theme.palette.common.white,
+        textAlign: "center",
+        padding: theme.spacing(4)
+    }
+}))
 
 export const Main = () => {
     //Show token values from the wallet
@@ -25,6 +34,7 @@ export const Main = () => {
 
     //send the brownie-cfg to ou 'src' folder
     //send the build folder
+    const classes = useStyles()
     let nrStr = "1337"
     const { chainId, error } = useEthers()
     if (chainId !== undefined) {
@@ -56,5 +66,9 @@ export const Main = () => {
     ]
 
 
-    return (<YourWallet supportedTokens={supportedTokens} />)
+    return (
+        <>
+            <h2 className={classes.title}>Dapp Token App</h2>
+            <YourWallet supportedTokens={supportedTokens} />
+        </>)
 }
